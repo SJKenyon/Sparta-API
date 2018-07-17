@@ -106,20 +106,22 @@ describe Postcodesio do
       expect(@response).to be_kind_of(Hash)
     end
 
-    # it "should return a postcode between 5-7 in length"  do
-    #   expect(@postcodesio.get_postcode_length).to all(be_between(5,7).inclusive)
-    # end
+    it "should return a postcode between 5-7 in length"  do
+      expect(@postcodesio.postcode_length).to all(be_between(5,7).inclusive)
+    end
 
-    # it "should return an quality key integer between 1-9" do
-    #   expect(@postcodesio.quality_key_length(3)).to all(be_between(1,9).inclusive)
-    # end
+    it "should return an quality key integer between 1-9" do
+      expect(@postcodesio.quality_key_length).to all(be_between(1,9).inclusive)
+    end
 
-#     it "should return an ordnance survey eastings value as integer" do
-#     end
-#
-#     it "should return a country which is one of the four constituent countries of the UK" do
-#     end
-#
+    it "should return an ordnance survey eastings value as integer" do
+      expect(@postcodesio.eastings).to all(be_kind_of(Integer))
+    end
+
+    it "should return a country which is one of the four constituent countries of the UK" do
+      expect(@postcodesio.countries).to all(eq('England').or(eq('Scotland')).or(eq('Wales')).or(eq('Northern Ireland')))
+    end
+
 #     it "should return a string value for NHS authority " do
 #     end
 #

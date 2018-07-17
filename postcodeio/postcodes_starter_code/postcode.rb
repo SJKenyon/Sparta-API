@@ -96,21 +96,20 @@ class Postcodesio
     @multi_postcode_results["result"][1]["query"]
   end
 
-  def first_postcode_length
-    @multi_postcode_results["result"]["query"].gsub(" ", "").length
+  def postcode_length
+    @multi_postcode_results["result"].map {|postcode| postcode["result"]["postcode"].gsub(" ", "").length}
   end
 
   def quality_key_length
+    @multi_postcode_results["result"].map {|postcode| postcode["result"]["quality"]}
+  end
 
-    # @multi_postcode_results["result"][array_length].each do
-    #   ["quality"].length
-    # end
+  def eastings
+    @multi_postcode_results["result"].map {|postcode| postcode["result"]["eastings"]}
+  end
 
-    # multi_postcode_results["result"][i]["quality"].each do |key, value|
-    #   value.length = ans
-    # end
-    # return ans
-    # @multi_postcode_results["result"]["quality"].length
+  def countries
+    @multi_postcode_results["result"].map {|postcode| postcode["result"]["country"]}
   end
 
 end
